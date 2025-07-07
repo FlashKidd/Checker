@@ -56,6 +56,11 @@ if(!isset($_SESSION["user_id"])){
       font-size: 1.8rem;
       margin-bottom: 1rem;
     }
+    .welcome {
+      font-size: 1rem;
+      color: var(--neon3);
+      margin-bottom: 1rem;
+    }
     .stats {
       display: flex;
       gap: 1rem;
@@ -74,9 +79,7 @@ if(!isset($_SESSION["user_id"])){
       font-size: 1.2rem;
       font-weight: bold;
       margin: 0.2rem 0;
-      background: linear-gradient(90deg, var(--neon1), var(--neon2));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: var(--neon1);
     }
     .stat-label { font-size: 0.7rem; color: #aaa; }
     textarea {
@@ -97,14 +100,21 @@ if(!isset($_SESSION["user_id"])){
       margin-bottom: 0.8rem;
       padding: 0.6rem;
       font-size: 0.95rem;
-      border: 2px solid var(--neon1);
-      background: var(--panel);
+      border-radius: 6px;
+    }
+    .controls select {
+      background: #222;
+      border: none;
       color: var(--text);
-      border-radius: 50px;
+    }
+    .controls button {
+      background: var(--neon1);
+      border: none;
+      color: #000;
+      font-weight: bold;
       cursor: pointer;
-      box-shadow: 0 0 8px var(--neon1);
-      transition: all 0.2s;
-      text-align: center;
+      transition: 0.3s ease;
+      box-shadow: 0 0 6px var(--neon1);
     }
     button:disabled {
       opacity: 0.4;
@@ -112,8 +122,7 @@ if(!isset($_SESSION["user_id"])){
       box-shadow: none;
     }
     button:not(:disabled):hover {
-      transform: translateY(-1px);
-      box-shadow: 0 0 16px var(--neon2), 0 0 32px var(--neon3);
+      background: #00d1ff;
     }
     .progress-container {
       margin-bottom: 1rem;
@@ -144,20 +153,18 @@ if(!isset($_SESSION["user_id"])){
     .pill {
       padding: 0.5rem 1rem;
       border-radius: 999px;
-      background: rgba(255,255,255,0.05);
-      border: 2px solid var(--neon2);
-      color: var(--neon2);
+      background: #222;
+      color: var(--text);
       font-size: 0.9rem;
       font-weight: bold;
       cursor: pointer;
-      box-shadow: 0 0 6px var(--neon2);
-      transition: all 0.2s;
+      box-shadow: 0 0 6px var(--neon1);
+      transition: 0.3s;
       user-select: none;
     }
     .pill.active {
-      background: var(--neon2);
-      color: var(--bg);
-      box-shadow: 0 0 12px var(--neon1), 0 0 24px var(--neon3);
+      background: var(--neon1);
+      color: #000;
     }
     .pill .count { margin-left: 0.4rem; font-size: 1rem; }
     .results {
@@ -215,6 +222,7 @@ if(!isset($_SESSION["user_id"])){
   <canvas id="confetti"></canvas>
   <div class="container">
     <h1>Live Proxy Checker™</h1>
+    <div class="welcome">Welcome, <?php echo htmlspecialchars($_SESSION['user_id']); ?></div>
     <div class="stats">
       <div class="stat"><div class="stat-icon">📋</div><div class="stat-value" id="total">0</div><div class="stat-label">Total</div></div>
       <div class="stat"><div class="stat-icon">✔️</div><div class="stat-value" id="checked">0</div><div class="stat-label">Checked</div></div>
