@@ -10,7 +10,7 @@ if(!isset($_SESSION["user_id"])){
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Live Proxy Checker™</title>
+  <title>The One Checker™</title>
   <style>
     :root {
       --neon1: #00f6ff;
@@ -229,14 +229,14 @@ if(!isset($_SESSION["user_id"])){
 <body>
   <canvas id="confetti"></canvas>
   <div class="container">
-    <h1>Live Proxy Checker™</h1>
+    <h1>The One Checker™</h1>
     <div class="welcome">Welcome, <?php echo htmlspecialchars($_SESSION['user_id']); ?></div>
     <div class="stats">
       <div class="stat"><div class="stat-icon">📋</div><div class="stat-value" id="total">0</div><div class="stat-label">Total</div></div>
       <div class="stat"><div class="stat-icon">✔️</div><div class="stat-value" id="checked">0</div><div class="stat-label">Checked</div></div>
       <div class="stat"><div class="stat-icon">⏳</div><div class="stat-value" id="remaining">0</div><div class="stat-label">Remaining</div></div>
     </div>
-    <textarea id="ipList" placeholder="Enter IP:PORT, one per line…"></textarea>
+    <textarea id="ipList" placeholder="Enter cc|mes|ano|cvv, one per line…"></textarea>
     <div class="controls">
       <select id="apiSelect">
         <option value="1">API 1 (default)</option>
@@ -256,7 +256,7 @@ if(!isset($_SESSION["user_id"])){
     </div>
     <div id="results-ok" class="results"><button class="copy-btn" onclick="copyList('ok')">Copy</button><pre id="okList"></pre></div>
     <div id="results-fail" class="results"><button class="copy-btn" onclick="copyList('fail')">Copy</button><pre id="failList"></pre></div>
-    <footer>Live Proxy Checker™</footer>
+    <footer>The One Checker™</footer>
   </div>
   <script>
     const txt = document.getElementById('ipList');
@@ -361,7 +361,7 @@ if(!isset($_SESSION["user_id"])){
 
     // create a <pre> so you see the whole response
     const entry = document.createElement('pre');
-    entry.textContent = `${ip}\n${raw}`;
+    entry.textContent = `${raw}`;
     entry.style.borderLeft = `4px solid ${borderColor}`;
     entry.style.background   = bgColor;
 
