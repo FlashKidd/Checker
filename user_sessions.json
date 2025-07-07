@@ -1,1 +1,67 @@
+{
+    "974091917": {
+        "access_granted": true,
+        "proxy": "cjtzrmtb-rotate:ih9wsgsdslnh"
+    },
+    "2108400031": {
+        "access_granted": true,
+        "proxy": "cjtzrmtb-rotate:ih9wsgsdslnh"
+    },
+    "6420928028": {
+        "access_granted": false
+    },
+    "5197276170": {
+        "access_granted": false
+    },
+    "761575229": {
+        "access_granted": true
+    },
+    "7271262427": {
+        "streak": 0,
+        "start_time": 1750454213,
+        "questions": [
+            {
+                "question": "Which planet is known as the Red Planet?",
+                "answer": "mars",
+                "user_answer": null
+            },
+            {
+                "question": "Which continent is known as the 'Dark Continent'?",
+                "answer": "africa",
+                "user_answer": null
+            },
+            {
+                "question": "Which planet is known for its rings?",
+                "answer": "saturn",
+                "user_answer": null
+            }
+        ],
+        "current": 0,
+        "banned": false,
+        "start_spam_count": 0,
+        "expected_reply_to": 409
+    },
+    "1106302295": {
+        "access_granted": false
+    },
+    "1548317088": {
+        "access_granted": false
+    },
+    "1883701889": {
+        "access_granted": false,
+        "proxy": "cjtzrmtb-rotate:ih9wsgsdslnh"
+    },
+    "7862350781": {
+        "access_granted": false
+    },
+    "756372535": {
+        "access_granted": true
+    },
 
+    "5842107029": {
+        "access_granted": false
+    },
+    "6020153603": {
+        "access_granted": false
+    }
+}
