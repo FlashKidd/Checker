@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $userId = trim($_POST['user_id']);
 
     if (!isset($user_sessions[$userId]['access_granted']) || !$user_sessions[$userId]['access_granted']) {
-        $error = "⚠️ You must pass the challenge first. Use /start in the bot.";
+        $error = " You must pass the challenge first. Use /start in the bot.";
     } else {
         // Generate and send token
         $token = rand(100000, 999999);
@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Send token via bot
         $botToken = "8099845785:AAGNQGM7jgv38FpwFdJNbCY389NlBX1ZOZg";
-        $msg = "🔐 Your login token is: <b>$token</b>\nEnter this on the website.";
+        $msg = "🔐 Your login token is: <code>$token</code>\nEnter this on the website.";
         file_get_contents("https://api.telegram.org/bot$botToken/sendMessage?chat_id=$userId&text=" . urlencode($msg) . "&parse_mode=HTML");
 
         header("Location: token.php");
