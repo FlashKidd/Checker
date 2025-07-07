@@ -51,6 +51,7 @@ if(!isset($_SESSION["user_id"])){
       overflow: hidden;
       text-align: center;
     }
+
     h1 {
       text-align: center;
       font-size: 1.8rem;
@@ -61,6 +62,13 @@ if(!isset($_SESSION["user_id"])){
       color: var(--neon3);
       margin-bottom: 1rem;
     }
+
+    h1 {
+      text-align: center;
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
     .stats {
       display: flex;
       gap: 1rem;
