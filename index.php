@@ -224,6 +224,22 @@ if(!isset($_SESSION["user_id"])){
       pointer-events: none;
       z-index: 10;
     }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 1rem;
+      }
+      .container {
+        width: 100%;
+        padding: 20px;
+      }
+      .stats {
+        flex-direction: column;
+      }
+      .stat {
+        width: 100%;
+      }
+    }
   </style>
 </head>
 <body>
