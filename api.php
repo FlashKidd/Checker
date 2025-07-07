@@ -1,4 +1,9 @@
 <?php
+session_start();
+if(!isset($_SESSION["user_id"])){
+    header("Location: login.php");
+    exit;
+}
 ##################### STRIPE RAW BY THEFLASHXD ###########################
 error_reporting(0);
 date_default_timezone_set('Asia/Jakarta');
@@ -25,25 +30,20 @@ $mes = $separa[1];
 $ano = $separa[2];
 $cvv = $separa[3];
 
-function flash()
-{
-  $poxySocks = file("flash2.txt");
-  $myproxy = rand(0, sizeof($poxySocks) - 1);
-  $poxySocks = $poxySocks[$myproxy];
-  return $poxySocks;
+$proxyFile = 'flash2.txt';
+
+if (!file_exists($proxyFile)) {
+    die("❌ Proxy file not found.\n");
 }
-$poxySocks4 = flash();
-$proxydefault = str_replace("\r\n", '', $poxySocks4);
 
-$usrproxy = explode(":", $proxydefault);
-$proxyip = $usrproxy[0];
-$proxyport = $usrproxy[1];
-$proxyusr = $usrproxy[2];
-$proxypass = $usrproxy[3];
-$proxy = "$proxyip:$proxyport";
-$user = "$proxyusr:$proxypass";
+$proxies = array_filter(array_map('trim', file($proxyFile)));
+if (empty($proxies)) {
+    die("⚠️ No proxies found in flash2.txt\n");
+}
 
-echo "#Proxy:「{$proxydefault}」\n";
+// Pick one random proxy
+$proxydefault = $proxies[array_rand($proxies)];
+echo "#Proxy:「 $proxydefault 」\n";
 function value($str,$find_start,$find_end)
 {
     $start = @strpos($str,$find_start);
