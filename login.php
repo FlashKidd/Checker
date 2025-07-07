@@ -116,7 +116,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <div class="container">
         <img src="theone.png" alt="The One">
-        <h2>🧠 Access The One</h2>
+        <h2>Access The One</h2>
         <form method="POST">
             <input type="text" name="user_id" placeholder="Enter your Telegram User ID" required><br>
             <button type="submit">Request Access</button>
