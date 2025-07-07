@@ -1,3 +1,10 @@
+<?php
+session_start();
+if(!isset($_SESSION["user_id"])){
+    header("Location: login.php");
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,12 +13,12 @@
   <title>Live Proxy Checker™</title>
   <style>
     :root {
-      --neon1: #ff0080;
-      --neon2: #00ffee;
-      --neon3: #ffdd00;
-      --bg: #0d0d0d;
-      --text: #e0e0e0;
-      --panel: #111;
+      --neon1: #00f6ff;
+      --neon2: #00f6ff;
+      --neon3: #00f6ff;
+      --bg: #151515;
+      --text: #fff;
+      --panel: #222;
       --ok-bg: rgba(0,255,0,0.1);
       --fail-bg: rgba(255,0,0,0.1);
       --ok-border: #00ff00;
@@ -22,39 +29,31 @@
       margin: 0;
       padding: 0;
     }
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      min-height: 100vh;
-      padding: 2rem;
-      background: linear-gradient(45deg, var(--neon1), var(--neon2), var(--neon3), var(--neon1));
-      background-size: 400% 400%;
-      animation: bgAnim 15s ease infinite;
-      font-family: 'Segoe UI', sans-serif;
-      color: var(--text);
-    }
-    @keyframes bgAnim {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
+      body {
+        margin: 0;
+        font-family: 'Segoe UI', sans-serif;
+        background: linear-gradient(to bottom right, #0f0f0f, #1a1a1a);
+        color: var(--text);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
+        padding: 2rem;
+      }
     .container {
-      width: 100%;
+      width: 90%;
       max-width: 800px;
       background: var(--bg);
-      border-radius: 16px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.8), 0 0 40px var(--neon1);
-      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 0 25px rgba(0,255,255,0.2);
+      padding: 40px;
       position: relative;
       overflow: hidden;
+      text-align: center;
     }
     h1 {
       text-align: center;
       font-size: 1.8rem;
-      background: conic-gradient(from 90deg, var(--neon1), var(--neon2), var(--neon3));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
       margin-bottom: 1rem;
     }
     .stats {
