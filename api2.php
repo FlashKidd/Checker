@@ -1,4 +1,11 @@
 <?php
+
+session_start();
+if(!isset($_SESSION["user_id"])){
+    header("Location: login.php");
+    exit;
+}
+
 ##################### STRIPE RAW BY THEFLASHXD ###########################
 error_reporting(0);
 date_default_timezone_set('Asia/Jakarta');
