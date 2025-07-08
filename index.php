@@ -285,7 +285,7 @@ if(!isset($_SESSION["user_id"])){
     const ctx = canvas.getContext('2d');
     const container = document.querySelector('.container');
     let ipQueue = [], isRunning = false, total = 0, checked = 0, okCount = 0, failCount = 0;
-    const LIMIT = 5; let particles = [], confLaunched = false;
+    const LIMIT = 100; let particles = [], confLaunched = false;
 
     function resizeCanvas() {
       canvas.width = container.offsetWidth;
@@ -348,7 +348,7 @@ if(!isset($_SESSION["user_id"])){
 
   // pick endpoint based on API selector
   let endpoint = 'api.php';
-  if (apiSel.value === '2') endpoint = '#';
+  if (apiSel.value === '2') endpoint = 'api2.php';
   else if (apiSel.value === '3') endpoint = '#';
 
   const xhr = new XMLHttpRequest();
