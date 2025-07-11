@@ -2293,7 +2293,7 @@ $errorMessage = isset($shopifyErrors[$response_code])
     
 if (strpos($response,"thank_you") ||(strpos($response, "/processing?completed=true&reload_receipt=false&skip_shop_pay=true"))) {
 
-    echo '#Approved '.$ip.'「'.$error.'」 「Stripe Charge : @luffy_dxD」';
+    echo '#Approved '.$ip.'「CHARGED CVV」 「Stripe Charge : @luffy_dxD';
     fwrite(fopen("fortu.txt", 'a'), $ip. "\r\n");
 }else if (strpos($response,"INSUFFICIENT_FUNDS") || (strpos($response,"INCORRECT_CVC"))) {
     echo '<#Approved '.$ip.'「'.$errorMessage.' : '.$response_code.' : @luffy_dxD」';
