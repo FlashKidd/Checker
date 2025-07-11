@@ -163,16 +163,17 @@ for ($i = 0; $i < 2; $i++) {
     // echo "$hostFull/cart/$variantId:1";
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_PROXY, $proxydefault);
-    //curl_setopt($ch, CURLOPT_PROXYUSERPWD, $userPass);
     curl_setopt($ch, CURLOPT_URL, "$hostFull/cart/$variantId:1");
     curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
-    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-    curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd() . '/cookie.txt');
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
     curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd() . '/cookie.txt');
-    $response = curl_exec($ch);
+    curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd() . '/cookie.txt');
+    curl_setopt($ch, CURLOPT_HTTPHEADER, [
+        'user-agent: ' . $uA . '',
+    ]);
+
+    $response = curl_exec($ch);;
     $ccsx = $response;
     $redirectUrl = curl_getinfo($ch, CURLINFO_EFFECTIVE_URL);
     $attempt = trim(strip_tags(getStr($response, 'sourceId&quot;:&quot;', '&quot')));
