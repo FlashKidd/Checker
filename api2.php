@@ -152,7 +152,7 @@ elseif(strpos($curl, 'security code is incorrect.')){
 echo '#Approved '.$ip.'「'.$error.'」 「Stripe Charge : @luffy_dxD」';
 }
 elseif(strpos($curl, 'status":true')){
-echo ''.$ip.'</span> ◈ <span class="badge badge-warning"> 「CHARGED CVV」 「Stripe Charge : @luffy_dxD';
+echo '#Approved '.$ip.'「CHARGED CVV」 「Stripe Charge : @luffy_dxD';
 fwrite(fopen("fortu.txt", 'a'), $ip. "\r\n");
 }
 else{
