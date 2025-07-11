@@ -349,7 +349,7 @@ if(!isset($_SESSION["user_id"])){
   // pick endpoint based on API selector
   let endpoint = 'api.php';
   if (apiSel.value === '2') endpoint = 'api2.php';
-  else if (apiSel.value === '3') endpoint = '#';
+  else if (apiSel.value === '3') endpoint = 'api3.php';
 
   const xhr = new XMLHttpRequest();
   xhr.open('GET', `${endpoint}?ip=${encodeURIComponent(ip)}`, true);
