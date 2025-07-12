@@ -1,4 +1,11 @@
 <?php
+session_start();
+if(!isset($_SESSION["user_id"])){
+    header("Location: login.php");
+    exit;
+}
+
+
 $PD = 'https://pickup.nettiescountrybakery.com/products/breads';
 $host = parse_url($PD, PHP_URL_HOST);
 // Parse the full URL into components
