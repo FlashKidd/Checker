@@ -28,7 +28,8 @@ $hostFull = $parsedUrl['scheme'] . '://' . $parsedUrl['host'];
 // echo ''. $hostFull .'';return;
 date_default_timezone_set('Asia/Jakarta');
 
-@unlink('cookie.txt');
+$ckkk = rand(11111,9999).".txt";
+@unlink(''.$ckkk.'');;
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     extract($_POST);
 } elseif ($_SERVER['REQUEST_METHOD'] == "GET") {
@@ -158,8 +159,8 @@ curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
 curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd() . '/cookie.txt');
-curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd() . '/cookie.txt');
+curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd() . '/'.$ckkk.'');
+curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd() . '/'.$ckkk.'');
 $response = curl_exec($ch);
 
 // Match "currency" and "productId"
@@ -174,7 +175,7 @@ if (!empty($matches)) {
     echo "Product ID: $productId\n";
     echo "variantId ID: $variantId\n";
 } else {
-
+    @unlink(''.$ckkk.'');;
     return;
 }
 ###############################################################################
@@ -186,8 +187,8 @@ for ($i = 0; $i < 2; $i++) {
     curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-    curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd() . '/cookie.txt');
-    curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd() . '/cookie.txt');
+    curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd() . '/'.$ckkk.'');
+    curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd() . '/'.$ckkk.'');
     curl_setopt($ch, CURLOPT_HTTPHEADER, [
         'user-agent: ' . $uA . '',
     ]);
@@ -223,6 +224,7 @@ $countryCode = trim(strip_tags(getStr($response, 'countryCode&quot;:&quot;', '&q
 $currencyCode = trim(strip_tags(getStr($response, 'currencyCode&quot;:&quot;', '&quot')));
 if (empty($webID) && (empty($paymentMethodIdentifier))) {
     echo 'SOMEHING IS WRONG';
+    @unlink(''.$ckkk.'');;
     return;
 }
 // echo "<br><hr> productId => $productId";
@@ -259,8 +261,8 @@ curl_setopt($ch, CURLOPT_URL, "https://atlas.shopifysvc.com/graphql");
 curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd() . '/cookie.txt');
-curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd() . '/cookie.txt');
+curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd() . '/'.$ckkk.'');
+curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd() . '/'.$ckkk.'');
 curl_setopt($ch, CURLOPT_HTTPHEADER, [
     'content-type: application/json',
     'path: /graphql',
@@ -297,8 +299,8 @@ curl_setopt($ch, CURLOPT_URL, "https://atlas.shopifysvc.com/graphql");
 curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd() . '/cookie.txt');
-curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd() . '/cookie.txt');
+curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd() . '/'.$ckkk.'');
+curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd() . '/'.$ckkk.'');
 curl_setopt($ch, CURLOPT_HTTPHEADER, [
     'content-type: application/json',
     'path: /graphql',
@@ -521,8 +523,8 @@ if (strpos($ccsx, "Shipping address")) {
     curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-    curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd() . '/cookie.txt');
-    curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd() . '/cookie.txt');
+    curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd() . '/'.$ckkk.'');
+    curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd() . '/'.$ckkk.'');
     curl_setopt($ch, CURLOPT_HTTPHEADER, [
         'content-type: application/json',
         'path: /checkouts/unstable/graphql?operationName=Proposal',
@@ -730,8 +732,8 @@ if (strpos($ccsx, "Shipping address")) {
     curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-    curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd() . '/cookie.txt');
-    curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd() . '/cookie.txt');
+    curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd() . '/'.$ckkk.'');
+    curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd() . '/'.$ckkk.'');
     curl_setopt($ch, CURLOPT_HTTPHEADER, [
         'content-type: application/json',
         'path: /checkouts/unstable/graphql?operationName=Proposal',
@@ -951,8 +953,8 @@ if (strpos($ccsx, "Shipping address")) {
     curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-    curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd() . '/cookie.txt');
-    curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd() . '/cookie.txt');
+    curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd() . '/'.$ckkk.'');
+    curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd() . '/'.$ckkk.'');
     curl_setopt($ch, CURLOPT_HTTPHEADER, [
         'content-type: application/json',
         'path: /checkouts/unstable/graphql?operationName=Proposal',
@@ -1164,8 +1166,8 @@ if (strpos($ccsx, "Shipping address")) {
     curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-    curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd() . '/cookie.txt');
-    curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd() . '/cookie.txt');
+    curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd() . '/'.$ckkk.'');
+    curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd() . '/'.$ckkk.'');
     curl_setopt($ch, CURLOPT_HTTPHEADER, [
         'content-type: application/json',
         'path: /checkouts/unstable/graphql?operationName=Proposal',
@@ -1388,8 +1390,8 @@ if (strpos($ccsx, "Shipping address")) {
     curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-    curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd() . '/cookie.txt');
-    curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd() . '/cookie.txt');
+    curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd() . '/'.$ckkk.'');
+    curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd() . '/'.$ckkk.'');
     curl_setopt($ch, CURLOPT_HTTPHEADER, [
         'content-type: application/json',
         'path: /checkouts/unstable/graphql?operationName=Proposal',
@@ -1441,8 +1443,8 @@ if (strpos($ccsx, "Shipping address")) {
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
     curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-    curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd() . '/cookie.txt');
-    curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd() . '/cookie.txt');
+    curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd() . '/'.$ckkk.'');
+    curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd() . '/'.$ckkk.'');
     curl_setopt($ch, CURLOPT_POSTFIELDS, '{"credit_card":{"number":"' . $ccc . '","month":' . $mes . ',"year":' . $ano . ',"verification_value":"' . $cvv . '","start_month":null,"start_year":null,"issue_number":"","name":"Flash Kidd"},"payment_session_scope":"' . $host . '"}');
     $curl = curl_exec($ch);
     curl_close($ch);
@@ -1681,8 +1683,8 @@ if (strpos($ccsx, "Shipping address")) {
     curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-    curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd() . '/cookie.txt');
-    curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd() . '/cookie.txt');
+    curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd() . '/'.$ckkk.'');
+    curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd() . '/'.$ckkk.'');
     curl_setopt($ch, CURLOPT_HTTPHEADER, [
         'content-type: application/json',
         'path: /checkouts/unstable/graphql?operationName=SubmitForCompletion',
@@ -1731,8 +1733,8 @@ if (strpos($ccsx, "Shipping address")) {
     curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-    curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd() . '/cookie.txt');
-    curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd() . '/cookie.txt');
+    curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd() . '/'.$ckkk.'');
+    curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd() . '/'.$ckkk.'');
     curl_setopt($ch, CURLOPT_HTTPHEADER, [
         'content-type: application/json',
         'origin: ' . $hostFull . '',
@@ -1921,8 +1923,8 @@ if (strpos($ccsx, "Shipping address")) {
     curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-    curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd() . '/cookie.txt');
-    curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd() . '/cookie.txt');
+    curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd() . '/'.$ckkk.'');
+    curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd() . '/'.$ckkk.'');
     curl_setopt($ch, CURLOPT_HTTPHEADER, [
         'content-type: application/json',
         'path: /checkouts/unstable/graphql?operationName=Proposal',
@@ -1974,8 +1976,8 @@ if (strpos($ccsx, "Shipping address")) {
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
     curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-    curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd() . '/cookie.txt');
-    curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd() . '/cookie.txt');
+    curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd() . '/'.$ckkk.'');
+    curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd() . '/'.$ckkk.'');
     curl_setopt($ch, CURLOPT_POSTFIELDS, '{"credit_card":{"number":"' . $ccc . '","month":' . $mes . ',"year":' . $ano . ',"verification_value":"' . $cvv . '","start_month":null,"start_year":null,"issue_number":"","name":"Flash Kidd"},"payment_session_scope":"' . $host . '"}');
     $curl = curl_exec($ch);
     curl_close($ch);
@@ -2193,8 +2195,8 @@ if (strpos($ccsx, "Shipping address")) {
     curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-    curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd() . '/cookie.txt');
-    curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd() . '/cookie.txt');
+    curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd() . '/'.$ckkk.'');
+    curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd() . '/'.$ckkk.'');
     curl_setopt($ch, CURLOPT_HTTPHEADER, [
         'content-type: application/json',
         'path: /checkouts/unstable/graphql?operationName=SubmitForCompletion',
@@ -2233,8 +2235,8 @@ if (strpos($ccsx, "Shipping address")) {
     curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-    curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd() . '/cookie.txt');
-    curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd() . '/cookie.txt');
+    curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd() . '/'.$ckkk.'');
+    curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd() . '/'.$ckkk.'');
     curl_setopt($ch, CURLOPT_HTTPHEADER, [
         'content-type: application/json',
         'origin: ' . $hostFull . '',
@@ -2327,4 +2329,5 @@ if (strpos($response, "thank_you") || (strpos($response, "/processing?completed=
     }
     echo '#Declined ' . $ip . '「' . $errorMessage . ' : ' . $response_code . ' : @luffy_dxD」';
 }
+@unlink(''.$ckkk.'');;
 ?>
