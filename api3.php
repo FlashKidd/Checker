@@ -6,8 +6,19 @@ if(!isset($_SESSION["user_id"])){
     exit;
 }
 $userId = $_SESSION["user_id"];
+$urls = [
+    'https://pickup.nettiescountrybakery.com/products/breads',
+    'https://cbhshop.com/products/donate',
+    'https://www.raymondgeddes.com/products/dr-seuss%E2%84%A2-grip-gel-pens',
+    'https://www.funcarnival.com/products/pirate-hat-child-size',
+    'https://marshallplasticsurgery.myshopify.com/products/copy-of-gift-certificate-1-marshall-plastic-surgery',
+    'https://www.monsterk9.com/products/monster-k9-dog-toys-gift-card',
+    'https://www.doggijuana.com/products/doggijuana-hemp-dog-collar'
+];
 
-$PD = 'https://pickup.nettiescountrybakery.com/products/breads';
+// Randomly choose one URL
+$PD = $urls[array_rand($urls)];
+ 
 $host = parse_url($PD, PHP_URL_HOST);
 // Parse the full URL into components
 $parsedUrl = parse_url($PD);
