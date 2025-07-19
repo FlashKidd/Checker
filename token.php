@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($enteredToken == $expectedToken) {
         $_SESSION['user_id'] = $_SESSION['pending_user'];
         unset($_SESSION['pending_token'], $_SESSION['pending_user']);
-        header("Location: index.php");
+        header("Location: index2.php");
         exit;
     } else {
         $error = "❌ Invalid token. Please check the code sent to your Telegram.";
